@@ -1,0 +1,25 @@
+.list {
+   width: 400px; 
+}
+
+.item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    border: 1px solid blue;
+}
+
+.name {
+    margin-top: 0px;
+    margin-bottom: 0;
+    margin-right: 10px;
+}
+
+.number {
+   margin-left: 10px;
+}
+
+/*.btn {
+   
+}*/

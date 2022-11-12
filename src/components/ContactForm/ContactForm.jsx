@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { nanoid } from 'nanoid';
 
+
 export class ContactForm extends Component {
     state = {
         number: '',
@@ -10,40 +11,33 @@ export class ContactForm extends Component {
     nameInputId = nanoid();
     numberInputId = nanoid();
 
-      handleChange = event => {
+handleChange = event => {
         const { name, value } = event.currentTarget;
     
-        this.setState({ [name]: value });
+        this.setState({ [name]: value, });
      };
- 
-      handleNameChange = event => {
-        
-    
-       this.setState({ name: event.currentTarget.value });
-      };
-    
-      handleNumberChange = event => {
-        console.log(event.currentTarget.value);
-    
-        this.setState({number: event.currentTarget.value});
-      };
-    
-      handleSubmit = event => {
+
+handleSubmit = event => {
         event.preventDefault();
-        console.log(this.state);
-        this.props.onSubmit(this.state)
+        console.log('state', this.state);
+        console.log('name', this.state.name);
+        console.log('#', this.state.number);
+        this.props.onSubmit(this.state.name);
+        this.props.onSubmit(this.state.number);
 
-        this.reset();
-      };
-
-      reset = () => {
         this.setState({ name: '', number: '' });
+        //this.reset();
       };
+
+      //reset = () => {
+       // this.setState({ name: '', number: '' });
+      //};
 
     render() {
         return (
            
-             <form onSubmit={this.handleSubmit}>
+             <form className='form'
+             onSubmit={this.handleSubmit}>
                <label htmlFor={this.nameInputId}>
                  Name
                  <input
@@ -51,10 +45,11 @@ export class ContactForm extends Component {
                    name='name'
                    value={this.state.name}
                    onChange={this.handleChange}
-                   id={this.nameInputId}        
+                   id={this.nameInputId}       
                    pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
                    title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
                    required
+
                  />
 
              
@@ -67,12 +62,24 @@ export class ContactForm extends Component {
                    value={this.state.number}
                    onChange={this.handleChange}
                    id={this.numberInputId}
+                   pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+                   title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+                   required
              />
             </label>
-            <button type="submit">Add contact</button>
+            <button type="submit" className='FormBtn'>Add contact</button>
        </form>
            );
          }
     }
 
+   //handleNameChange = event => {
+        
+       //this.setState({ name: event.currentTarget.value });
+      //};
     
+      //handleNumberChange = event => {
+      //  console.log(event.currentTarget.value);
+    
+      //  this.setState({number: event.currentTarget.value});
+     // }; 
