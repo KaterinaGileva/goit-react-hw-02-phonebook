@@ -2,7 +2,6 @@ import { Component } from 'react';
 import Filter from './components/Filter/Filter';
 import { ContactForm } from './components/ContactForm/ContactForm';
 //import { Formik, Field, Form } from "formik";
-//import "./styles.css";
 //import * as yup from 'yup';
 
 import initialContacts from './contacts.json';
@@ -16,30 +15,25 @@ export class App extends Component {
     filter: '',
   };
 
-  addContact = (name)=> {
+  addContact = ({name, number})=> {
       console.log('name', name);
-      
+      console.log('#', number);
       const contact = {
           id: nanoid(),
-         name    
+         name,
+         number  
       };
       
       this.setState(({ contacts }) => ({
         contacts: [contact, ...contacts],
      }));
     };
- 
-  
- 
+
 deleteContact = contactId => {
     this.setState(prevState => ({
       contacts: prevState.contacts.filter(contact => contact.id !== contactId),
    }));
  };
-
-formSubmitHandler = data => {
-  console.log(data);
-};
 
 changeFilter = event => {
     this.setState({filter: event.currentTarget.value});
@@ -48,8 +42,6 @@ changeFilter = event => {
 getVisibleContacts = () => {
      const { filter, contacts } = this.state;
      const normalizedFilter = filter.toLowerCase();
-
-  
 
      return contacts.filter(contact =>
      contact.name.toLowerCase().includes(normalizedFilter),
@@ -60,8 +52,6 @@ getVisibleContacts = () => {
    
     const { filter } = this.state;
     const visibleContacts = this.getVisibleContacts();
-
-
 
     return (
      <div className='container'>
