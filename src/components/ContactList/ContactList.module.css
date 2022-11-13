@@ -1,5 +1,7 @@
 .list {
-   width: 400px; 
+   width: 330px;
+   list-style: circle ;
+   
 }
 
 .item {
@@ -7,6 +9,7 @@
     align-items: center;
     justify-content: space-between;
     padding: 20px;
+    
     border: 1px solid blue;
 }
 
@@ -14,12 +17,17 @@
     margin-top: 0px;
     margin-bottom: 0;
     margin-right: 10px;
+    font-weight: 500;
+    
 }
 
 .number {
    margin-left: 10px;
+   color: blue;
 }
 
-/*.btn {
-   
-}*/
+.btn {
+    
+    font-weight: 600;
+    background-color: aqua;
+}
