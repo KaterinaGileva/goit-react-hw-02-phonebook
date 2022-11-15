@@ -1,39 +1,17 @@
 import { Component } from 'react';
-import Filter from './components/Filter/Filter';
 import { ContactForm } from './components/ContactForm/ContactForm';
-//import { Formik, Field, Form } from "formik";
-//import * as yup from 'yup';
-
+import Filter from './components/Filter/Filter';
+import ContactList from 'components/ContactList';
 import initialContacts from './contacts.json';
+
 import { nanoid } from 'nanoid';
 
-import ContactList from 'components/ContactList';
 
 export class App extends Component {
   state = {
     contacts: initialContacts,
     filter: '',
   };
-
- // addContact = ({name, number})=> {
- //     console.log('name', name);
- //     console.log('#', number);
- //     console.log('fg', this.state.contacts);
- //     console.log('con', contact);
-  //    const contact = {
-  //        id: nanoid(),
-  //       name,
-  //       number  
-  //    };
-
-  //    console.log('con', contacts);
-  //    if (contact === this.state.contacts) {
-  //      alert(`${name} is already in contacts`);
-   //   }
-   //   this.setState(({ contacts }) => ({
-  //      contacts: [contact, ...contacts],
-  //   }));
- //   };
 
  addContact = ({name, number}) => {
   const normalizedFilter = name.toLowerCase();
@@ -93,44 +71,6 @@ getVisibleContacts = () => {
 }
 }
 
-//const schema = yup.object().shape({
-//  login: yup.string().required(),
- //password: yup.string().min(6).max(16).required(),
- // email: yup.string().email(),
- // website: yup.string().url(),
- 
-//});
-//
 
-//addContact = (name)=> {
-  //  console.log('name', name);
-    
-   // const contact = {
-   //     id: nanoid(),
-  //      name    
-  //  };
-    
-   // this.setState(({ contacts }) => ({
-   //   contacts: [contact, ...contacts],
-   // }));
- // };
-
-//<Formik 
-//initialValues={initialValues} 
-//validationSchema={schema}
-//onSubmit={handleSubmit} />
-
-//this.setState(prevState => ({
-   //  contacts: prevState.contacts.map(contact => {
-    //  if (contact.id === contactId) {
-    //     return {
-     //     ...contact,
-    //     completed: !contact.completed,
-    //    };
-    //   }
-
-   //   return contact;
-   // }),
- //  }));
 
  
